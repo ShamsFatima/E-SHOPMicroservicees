@@ -1,0 +1,28 @@
+﻿using Ordering.Domain.Abstractions;
+using Ordering.Domain.ValueObjects;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Ordering.Domain.Models
+{
+    public class Customer:Entity<CustomerId>
+    {
+        public string Name { get; private set; } = string.Empty;
+        public string Email { get; private set; } = string.Empty;
+        public static Customer Create(string name, string email)
+        {
+            ArgumentException.ThrowIfNullOrEmpty(name, nameof(name));
+            ArgumentException.ThrowIfNullOrEmpty(email, nameof(email));
+            var customer = new Customer
+            {
+                Id = CustomerId.Of(Guid.NewGuid()),
+                Name = name,
+                Email = email
+            };
+            return customer;
+        }
+    }
+}
