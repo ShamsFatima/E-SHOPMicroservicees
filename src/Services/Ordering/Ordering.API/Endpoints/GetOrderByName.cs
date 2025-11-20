@@ -1,5 +1,7 @@
 ﻿using Carter;
+using Mapster;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Ordering.Application.Dtos;
 using Ordering.Application.Orders.Queries.GetOrdersByName;
 
@@ -19,7 +21,7 @@ namespace Ordering.API.Endpoints
             })
                 .WithName("GetOrdersByName")
                 .Produces<GetOrdersByNameResponse>(StatusCodes.Status200OK)
-                .ProducesProblems(StatusCodes.Status400BadRequest, StatusCodes.Status500InternalServerError)
+                .ProducesProblem(StatusCodes.Status400BadRequest)
                 .WithSummary("Get Orders by Name")
                 .WithDescription("Get Orders by Name");
 

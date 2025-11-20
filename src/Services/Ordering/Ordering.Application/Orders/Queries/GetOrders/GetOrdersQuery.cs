@@ -1,4 +1,5 @@
 ﻿using BuildingBlocks.CQRS;
+using BuildingBlocks.Pagination;
 using Ordering.Application.Dtos;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace Ordering.Application.Orders.Queries.GetOrders
 {
-    public record GetOrdersQuery<PaginationRequest>(PaginationRequest Pagination) : IQuery<GetOrdersResult>;
-    public record GetOrdersResult(IEnumerable<OrderDto> OrderDtos);
+    public record GetOrdersQuery(PaginationRequest Pagination) : IQuery<GetOrdersResult>;
+
+    public record GetOrdersResult(PaginationResult<OrderDto> Orders);
 }

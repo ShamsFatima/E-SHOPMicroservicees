@@ -7,8 +7,8 @@ using Ordering.Application.Orders.Commands.UpdateOrder;
 
 namespace Ordering.API.Endpoints
 {
-    public record UpdateOrderResponse(OrderDto OrderDto);
-    public record UpdateOrderRequest(bool IsSuccess);
+    public record UpdateOrderRequest(OrderDto OrderDto);
+    public record UpdateOrderResponse(bool IsSuccess);
     public class UpdateOrder : ICarterModule
     {
         public void AddRoutes(IEndpointRouteBuilder app)

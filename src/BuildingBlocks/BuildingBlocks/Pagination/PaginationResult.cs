@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace BuildingBlocks.Pagination
 {
-    public class PaginationResult<TEntity>(int pageIndex, int pageSize, int totalItems, IEnumerable<TEntity> items) where TEntity:class
+    public class PaginationResult<TEntity>(int pageIndex, int pageSize, long totalItems, IEnumerable<TEntity> items) where TEntity:class
     {
         public int PageIndex { get; } = pageIndex;
         public int PageSize { get; } = pageSize;
-        public int TotalItems { get; } = totalItems;
+        public long TotalItems { get; } = totalItems;
         public int TotalPages => (int)Math.Ceiling((double)TotalItems / PageSize);
         public IEnumerable<TEntity> Items { get; } = items;
     }

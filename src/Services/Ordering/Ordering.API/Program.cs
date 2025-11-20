@@ -5,7 +5,7 @@ using Ordering.Infrastructure.Data.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services
-    .AddAppplicationServices()
+    .AddAppplicationServices(builder.Configuration)
     .AddInfrastructureServices(builder.Configuration)
     .AddApiServices();
 var app = builder.Build();
@@ -13,8 +13,8 @@ var app = builder.Build();
 app.MapGet("/", () => "Hello World!");
 
 app.UseAPiServices();
-if (app.Environment.IsDevelopment())
-{
-   await app.Services.InitialiseDatabaseAsync();
-}
+//if (app.Environment.IsDevelopment())
+//{
+//   await app.Services.InitialiseDatabaseAsync();
+//}
 app.Run();

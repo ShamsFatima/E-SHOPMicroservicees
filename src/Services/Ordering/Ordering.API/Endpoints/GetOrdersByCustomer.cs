@@ -1,4 +1,5 @@
 ﻿using Carter;
+using Mapster;
 using MediatR;
 using Ordering.Application.Dtos;
 using Ordering.Application.Orders.Queries.GetOrdersByCustomer;
@@ -6,7 +7,8 @@ using Ordering.Application.Orders.Queries.GetOrdersByCustomer;
 namespace Ordering.API.Endpoints
 {
     public record GetOrdersByCustomersRequest(Guid CustomerId);
-    public record GetOrdersByCustomersResponse(IEnumerable<OrderDto> Orders);
+    public record GetOrdersByCustomersResponse(IEnumerable<OrderDto> OrderDtos);
+
     public class GetOrdersByCustomer : ICarterModule
     {
         public void AddRoutes(IEndpointRouteBuilder app)

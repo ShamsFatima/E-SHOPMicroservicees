@@ -7,6 +7,7 @@ using HealthChecks.UI.Client;
 using Marten;
 using Marten.AspNetCore;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using BuildingBlocks.Messaging.MassTransit;
 
 var builder = WebApplication.CreateBuilder(args);
 var assembly=typeof(Program).Assembly;
@@ -36,6 +37,7 @@ builder.Services.AddGrpcClient<Discount.Grpc.Protos.DiscountProtoService.Discoun
 {
     ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
 });
+builder.Services.AddMessageBroker(builder.Configuration);
 builder.Services.AddExceptionHandler<CustomExceptionHandler>();
 builder.Services.AddHealthChecks().AddNpgSql(builder.Configuration.GetConnectionString("Database")!)
     .AddRedis(builder.Configuration.GetConnectionString("Redis")!);

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Ordering.Application.Data;
 using Ordering.Application.Dtos;
+using Ordering.Application.Extensions;
 using Ordering.Domain.Models;
 using Ordering.Domain.ValueObjects;
 using System;
